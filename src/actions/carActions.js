@@ -5,3 +5,11 @@ return {
     payload: id
 }
 }
+
+export const REM_FEATURE = 'REM_FEATURE';
+export const remFeature = (id) => {
+return {
+    type: REM_FEATURE,
+    payload: id
+}
+}

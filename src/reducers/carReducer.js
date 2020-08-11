@@ -1,4 +1,4 @@
-import {ADD_FEATURE} from '../actions/carActions';
+import {ADD_FEATURE, REM_FEATURE} from '../actions/carActions';
 
 const initialState = {
 additionalPrice: 0,
@@ -37,6 +37,17 @@ switch(action.type) {
         }
     }
     return state
+    }
+
+    case REM_FEATURE: {
+        return {
+            ...state,
+            car: {
+                ...state.car,
+                features: state.car.features.filter(item => item.id !== action.payload)
+                
+            }
+        }
     }
 
     default:

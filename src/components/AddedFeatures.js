@@ -3,7 +3,6 @@ import AddedFeature from './AddedFeature';
 import {connect} from 'react-redux';
 
 const AddedFeatures = props => {
-  console.log(props)
   return (
     <div className="content">
       <h6>Added features:</h6>

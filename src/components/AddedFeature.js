@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {remFeature} from '../actions/carActions';
 
 const AddedFeature = props => {
-  console.log(props)
   return (
     <li>
       {/* Add an onClick to run a function to remove a feature */}
@@ -16,4 +15,6 @@ const AddedFeature = props => {
   );
 };
 
-export default connect((state) => {}, {remFeature})(AddedFeature);
+export default connect((state) => {
+  return {}
+}, {remFeature})(AddedFeature);

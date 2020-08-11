@@ -24,6 +24,7 @@ totalAmount: 26395
 export const carReducer = (state = initialState, action) => {
 switch(action.type) {
     case ADD_FEATURE: {
+    const theFeature = state.additionalFeatures.find(item => item.id === action.payload)
     if (!state.car.features.find(item => item.id === action.payload)) {
         return {
             ...state,
@@ -31,22 +32,27 @@ switch(action.type) {
                 ...state.car,
                 features: [
                     ...state.car.features,
-                    state.additionalFeatures.find(item => item.id === action.payload)
+                    theFeature
                 ]
-            }
+            },
+            additionalPrice: state.additionalPrice + 
+                theFeature.price
         }
     }
     return state
     }
 
     case REM_FEATURE: {
+        const theFeature = state.additionalFeatures.find(item => item.id === action.payload)
         return {
             ...state,
             car: {
                 ...state.car,
                 features: state.car.features.filter(item => item.id !== action.payload)
                 
-            }
+            },
+            additionalPrice: state.additionalPrice - 
+                theFeature.price
         }
     }
 

@@ -36,23 +36,28 @@ switch(action.type) {
                 ]
             },
             additionalPrice: state.additionalPrice + 
-                theFeature.price
+                theFeature.price,
+            additionalFeatures: state.additionalFeatures.filter(item => item.id !== action.payload)
         }
     }
     return state
     }
 
     case REM_FEATURE: {
-        const theFeature = state.additionalFeatures.find(item => item.id === action.payload)
+        const theFeature = state.car.features.find(item => item.id === action.payload)
         return {
             ...state,
+            additionalFeatures: [
+                ...state.additionalFeatures,
+                theFeature
+            ],
             car: {
                 ...state.car,
                 features: state.car.features.filter(item => item.id !== action.payload)
                 
             },
             additionalPrice: state.additionalPrice - 
-                theFeature.price
+                theFeature.price,
         }
     }
 

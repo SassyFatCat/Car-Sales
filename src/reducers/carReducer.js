@@ -1,27 +1,7 @@
-import {ADD_FEATURE, REM_FEATURE} from '../actions/carActions';
+import {ADD_FEATURE, REM_FEATURE, CHANGE_CAR} from '../actions/carActions';
+import {cars} from '../components/cars';
 
-const initialState = {
-additionalPrice: 0,
-
-car: {
-    price: 26395,
-    name: '2019 Ford Mustang',
-    image:
-        'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
-    features: []
-},
-
-additionalFeatures: [
-    { id: 1, name: 'V-6 engine', price: 1500 },
-    { id: 2, name: 'Racing detail package', price: 1500 },
-    { id: 3, name: 'Premium sound system', price: 500 },
-    { id: 4, name: 'Rear spoiler', price: 250 }
-],
-
-totalAmount: 26395
-}
-
-export const carReducer = (state = initialState, action) => {
+export const carReducer = (state = cars.mustang, action) => {
 switch(action.type) {
     case ADD_FEATURE: {
     const theFeature = state.additionalFeatures.find(item => item.id === action.payload)
@@ -59,6 +39,12 @@ switch(action.type) {
             additionalPrice: state.additionalPrice - 
                 theFeature.price,
         }
+    }
+
+    case CHANGE_CAR: {
+        const whichCar = action.payload;
+        state = cars[whichCar]
+        return state
     }
 
     default:

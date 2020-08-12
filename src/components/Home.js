@@ -1,10 +1,14 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {changeCar} from '../actions/carActions';
 
-export default function Home() {
+const Home = (props) => {
+
 const history = useHistory();
 const handleRoute = event => {
 history.push(`/${event.target.id}`)
+props.changeCar(event.target.id)
 }
 
     return (
@@ -16,3 +20,7 @@ history.push(`/${event.target.id}`)
         </div>
     )
 }
+
+export default connect((state) => {
+return {}
+}, {changeCar})(Home);

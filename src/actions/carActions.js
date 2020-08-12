@@ -13,3 +13,11 @@ return {
     payload: id
 }
 }
+
+export const CHANGE_CAR = 'CHANGE_CAR';
+export const changeCar = (id) => {
+return {
+    type: CHANGE_CAR,
+    payload: id
+}
+}
